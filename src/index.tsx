@@ -15,3 +15,8 @@ root.render(
 );
 
 reportWebVitals();
+
+// i18next
+// light mode and dark mode
+// axios 
+// redux
