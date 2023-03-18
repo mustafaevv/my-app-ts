@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
-
+import { BrowserRouter } from "react-router-dom";
 import Test from "./components/Test";
 
 import classes from "./App.module.scss";
 import "./theme/theme.scss";
+import AllRoutes from "./routes/AllRoutes";
+import Header from "./components/Header";
 
 const App = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
@@ -29,11 +31,10 @@ const App = () => {
 
   return (
     <div className={classNames(classes["App"], theme)}>
-      <h1>{`${t("title")}`}</h1>
-      <Test />
-      <button onClick={() => handleChangeLanguage("en")}>eng</button>
-      <button onClick={() => handleChangeLanguage("ru")}>ru</button>
-      <button onClick={handleChangeTheme}>changeBg</button>
+      <BrowserRouter>
+        <Header language={handleChangeLanguage} theme={handleChangeTheme} />
+        <AllRoutes />
+      </BrowserRouter>
     </div>
   );
 };
