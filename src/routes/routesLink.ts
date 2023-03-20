@@ -25,6 +25,11 @@ const links: LinksType[] = [
     name: "contact",
     link: "/contact",
   },
+  {
+    id: 4,
+    name: "settings",
+    link: "/settings",
+  },
 ];
 
 export default links;
