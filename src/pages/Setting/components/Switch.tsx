@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 type checkedProp = {
@@ -6,11 +7,11 @@ type checkedProp = {
 };
 
 const Wrapper = styled.div<checkedProp>`
-  width: 43px;
+  width: 44px;
   height: 24px;
   border-radius: 15px;
   background: ${({ checked }) => (checked ? "#41ca48" : "#cecece")};
-  padding: 1px;
+  padding: 1.5px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 `;
@@ -31,19 +32,20 @@ type Props = {
 };
 
 const Switch: FC<Props> = ({ checked = true, onCheck }) => {
+  const { i18n } = useTranslation();
+
   const handleChange = () => {
     if (onCheck) {
       onCheck((state) => !state);
+     i18n.changeLanguage()
     }
-    console.log(onCheck);
-
   }
 
-  return (
-    <Wrapper checked={checked} onClick={handleChange}>
-      <Controller checked={checked} />
-    </Wrapper>
-  );
+return (
+  <Wrapper checked={checked} onClick={handleChange}>
+    <Controller checked={checked} />
+  </Wrapper>
+);
 };
 
 export default Switch;

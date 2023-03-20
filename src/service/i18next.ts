@@ -14,7 +14,7 @@ i18next.use(initReactI18next).init<TransferFunction>({
       translation: ru,
     },
   },
-  lng: localStorage.getItem("lng") || "en",
+  lng: "en",
 });
 
 export default i18next;

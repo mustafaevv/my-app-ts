@@ -1,7 +1,7 @@
-import i18next from "i18next";
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+
 import { AppContext } from "../../App";
 import Container from "../../layout/Container";
 import Switch from "./components/Switch";
@@ -21,25 +21,35 @@ const OptionText = styled.p<{ disabled: boolean }>`
 `;
 
 
-
-
 const Setting = () => {
-  const [theme, setTheme] = useState(true)
   const appContext = useContext(AppContext)
-  console.log(appContext);
+  const { t } = useTranslation();
 
-  const { t } = useTranslation()
-  // const test = useContext()
-  // const handleChangeTheme = () => theme()
+  const [test, setTest] = useState(false)
 
+
+  const handleChangeLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log(test);
+  };
 
   return (
     <section>
       <h1>{`${t('title')}`}</h1>
       <Container>
+        <OptionText disabled={false}>ru</OptionText>
+        <Switch checked={test} onCheck={setTest} />
+        <OptionText disabled={false}>en</OptionText>
+
         <OptionText disabled={false}>dark</OptionText>
         <Switch checked={appContext?.darkThemeOn} onCheck={appContext?.setDarkThemeOn} />
         <OptionText disabled={false}>light</OptionText>
+        <div>
+          <label htmlFor="language-select">Select language: </label>
+          <select id="language-select" onChange={handleChangeLanguage}>
+            <option value="en">English</option>
+            <option value="ru">Russian</option>
+          </select>
+        </div>
       </Container>
     </section>
   );
