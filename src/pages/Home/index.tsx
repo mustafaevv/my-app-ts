@@ -1,10 +1,15 @@
 import React from 'react'
+import Container from '../../layout/Container'
 
 type Props = {}
 
 const Home = (props: Props) => {
   return (
-    <div>Home</div>
+    <div>
+      <Container>
+        Home
+      </Container>
+    </div>
   )
 }
 

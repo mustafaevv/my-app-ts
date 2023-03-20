@@ -1,10 +1,12 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 type Props = {}
 
 const About = (props: Props) => {
+  const { t } = useTranslation()
   return (
-    <div>About</div>
+    <div>{`${t('title')}`}</div>
   )
 }
 

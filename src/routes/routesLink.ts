@@ -11,17 +11,17 @@ const links: LinksType[] = [
     link: "/",
   },
   {
-    id: 0,
+    id: 1,
     name: "Product",
     link: "/product",
   },
   {
-    id: 0,
+    id: 2,
     name: "about",
     link: "/about",
   },
   {
-    id: 0,
+    id: 3,
     name: "contact",
     link: "/contact",
   },
