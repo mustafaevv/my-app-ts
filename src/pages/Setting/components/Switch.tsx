@@ -8,6 +8,11 @@ type Props = {
   onCheck?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+// type Props = {
+//   checked?: any;
+//   onCheck?: any;
+// };
+
 type checkedProp = {
   checked: boolean;
 };
@@ -24,8 +29,8 @@ const Wrapper = styled.div<checkedProp>`
 `;
 
 const Controller = styled.div<checkedProp>`
-  height: 1.370rem;
-  width: 1.370rem;
+  height: 1.37rem;
+  width: 1.37rem;
   border-radius: 0.938rem;
   background: #fcfff5;
   box-shadow: -1px 0 2px rgba(0, 0, 0, 0.1);
@@ -39,9 +44,10 @@ const Switch: FC<Props> = ({ checked = true, onCheck }) => {
 
   const handleChange = () => {
     if (onCheck) {
-      onCheck((state: any) => !state);
+      i18n.changeLanguage(i18n.language === "ru" ? "en" : "ru");
+      onCheck((state) => !state);
     }
-  }
+  };
 
   return (
     <Wrapper checked={checked} onClick={handleChange}>

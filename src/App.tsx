@@ -9,29 +9,31 @@ import AllRoutes from "./routes/AllRoutes";
 import Header from "./components/Header";
 
 type AppContextType = {
-  darkThemeOn: boolean
-  setDarkThemeOn: React.Dispatch<React.SetStateAction<boolean>>
-}
+  darkThemeOn: boolean;
+  setDarkThemeOn: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-const themeText = getFromStorage('darkThemeOn')
-const theme = themeText ? JSON.parse(themeText) : true
+const themeText = getFromStorage("darkThemeOn");
+const theme = themeText ? JSON.parse(themeText) : true;
 
-export const AppContext = createContext<AppContextType | null>(null)
+export const AppContext = createContext<AppContextType | null>(null);
 
 const App: FC = () => {
-  const [darkThemeOn, setDarkThemeOn] = useState(theme || true)
+  const [darkThemeOn, setDarkThemeOn] = useState(theme || true);
 
   useEffect(() => {
-    setToStorage('darkThemeOn', darkThemeOn)
-  }, [darkThemeOn])
+    setToStorage("darkThemeOn", darkThemeOn);
+  }, [darkThemeOn]);
 
   return (
     <BrowserRouter>
       <ThemeProvider theme={darkThemeOn ? darkTheme : lightTheme}>
-        <AppContext.Provider value={{
-          darkThemeOn,
-          setDarkThemeOn
-        }}>
+        <AppContext.Provider
+          value={{
+            darkThemeOn,
+            setDarkThemeOn,
+          }}
+        >
           <GlobalStyle />
           <Header />
           <AllRoutes />

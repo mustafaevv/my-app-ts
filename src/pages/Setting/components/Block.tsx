@@ -1,4 +1,6 @@
-import { useContext, useState } from 'react';
+import i18next from "i18next";
+import { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 import { AppContext } from "../../../App";
@@ -16,7 +18,7 @@ const Box = styled.div`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const Item = styled.div`
   display: flex;
@@ -41,28 +43,36 @@ const OptionText = styled.p<{ disabled: boolean }>`
     disabled ? theme.palette.gray : theme.text.secondary};
 `;
 
-const Block = () => {
-  const [test, setTest] = useState(true)
+interface Props {
+  defaultLanguage: string | boolean;
+}
 
-  const [language, setLanguage] = useState(false)
-  const appContext = useContext(AppContext)
+const Block = () => {
+  const { t } = useTranslation();
+  const appContext = useContext(AppContext);
+  const [test, setTest] = useState(true);
+
   return (
     <Box>
-      <Title>Settings</Title>
+      <Title>{t("SettingPageTitle")}</Title>
+      <Title>{t("title")}</Title>
       <Content>
         <Item>
           <OptionText disabled={false}>ru</OptionText>
-          <Switch checked={language} onCheck={setLanguage} />
+          <Switch onCheck={setTest} checked={test} />
           <OptionText disabled={true}>en</OptionText>
         </Item>
         <Item>
           <OptionText disabled={false}>light</OptionText>
-          <Switch checked={appContext?.darkThemeOn} onCheck={appContext?.setDarkThemeOn} />
+          <Switch
+            checked={appContext?.darkThemeOn}
+            onCheck={appContext?.setDarkThemeOn}
+          />
           <OptionText disabled={true}>dark</OptionText>
         </Item>
       </Content>
     </Box>
-  )
-}
+  );
+};
 
-export default Block
+export default Block;

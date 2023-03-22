@@ -7,11 +7,11 @@ import ru from "../locales/ru/language.json";
 
 i18next.use(initReactI18next).init<TransferFunction>({
   resources: {
-    en: {
-      translation: en,
-    },
     ru: {
       translation: ru,
+    },
+    en: {
+      translation: en,
     },
   },
   lng: localStorage.getItem("lng") || "en",

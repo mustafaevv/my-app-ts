@@ -1,4 +1,3 @@
-import {  useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
@@ -11,11 +10,6 @@ const Section = styled.section`
 
 const Setting = () => {
   const { t } = useTranslation();
-  const [test, setTest] = useState(true)
-
-  const handleChangeLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(event);
-  };
 
   return (
     <Section>
